@@ -2,15 +2,15 @@ const getAllTasks = (req, res) => {
     // return all tasks from database (todo)
     res.send('all tasks route')
 }
-const addTask = (req, res)=>{
-    const {task} = req.query
-    res.send(`add task ${task}`)
+const createTask = (req, res)=>{
+    const {name} = req.body
+    res.send(`add task ${name}`)
 }
-const taskDetail = (req, res)=>{
+const getTask = (req, res)=>{
     const {id} = req.params
-    res.send(`task ${id} detail`)
+    res.json({success:true, id:id})
 }
-const modifyTask = (req, res)=>{
+const updateTask = (req, res)=>{
     const {id} = req.params
     res.status(201).send(`task ${id} modification`)
 }
@@ -21,8 +21,8 @@ const deleteTask = (req, res)=>{
 
 module.exports = {
     getAllTasks,
-    addTask,
-    taskDetail,
-    modifyTask,
+    createTask,
+    getTask,
+    updateTask,
     deleteTask
 }

@@ -2,9 +2,9 @@ const express = require('express')
 const router = express.Router()
 const {
     getAllTasks,
-    addTask,
-    taskDetail,
-    modifyTask,
+    createTask,
+    getTask,
+    updateTask,
     deleteTask,
 } = require('../controllers/tasks')
 
@@ -15,8 +15,8 @@ const {
 // patch  /:id   || modify one task
 // delete /:id   || delete one task
 
-router.route('/').get(getAllTasks).post(addTask)
-router.route('/:id').get(taskDetail).patch(modifyTask).delete(deleteTask)
+router.route('/').get(getAllTasks).post(createTask)
+router.route('/:id').get(getTask).patch(updateTask).delete(deleteTask)
 
 
 
