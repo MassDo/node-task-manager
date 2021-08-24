@@ -1,10 +1,19 @@
+const Task = require('../models/Task')
+
+
 const getAllTasks = (req, res) => {
     // return all tasks from database (todo)
     res.send('all tasks route')
 }
-const createTask = (req, res)=>{
-    const {name} = req.body
-    res.send(`add task ${name}`)
+const createTask = async (req, res)=>{
+    try {
+        const task = await Task.create(req.body)
+        res.status(201).json({task})
+        
+    } catch (error) {
+        res.status(400).send(error)
+        
+    }
 }
 const getTask = (req, res)=>{
     const {id} = req.params
